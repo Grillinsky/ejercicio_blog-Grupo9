@@ -37,7 +37,11 @@
           <% for (const article of articles) {%>
           <tr>
             <td class="fw-bold text-center"><%=article.id%></td>
-            <td class="w-25"><%=article.title%></td>
+            <td class="w-25">
+              <a class="text-black text-decoration-none" href="/articulos/<%= article.id %>"
+                ><%=article.title%></a
+              >
+            </td>
             <td class="text-truncate" style="max-width: 300px"><%=article.content%></td>
             <td>
               <img src="<%= article.image %>" alt="" style="width: 70px; height: 70px" />

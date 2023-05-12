@@ -3,6 +3,9 @@
     <a class="navbar-brand mb-0 h1 text-white" href="/">Hack the blog</a>
     <div>
       <% if (locals.user) { %>
+      <a class="text-white btn m-1" href="/"
+        ><%= user.authorFirstname %> <%= user.authorLastname %></a
+      >
       <a class="btn btn-secondary m-1" href="/admin">Admin</a>
       <a class="btn btn-outline-danger m-1" href="/">LogOut</a>
 

@@ -23,7 +23,7 @@ const { es } = require("date-fns/locale");
 async function index(req, res) {
   const articles = await Article.findAll({
     include: [Author, Comment],
-    sort: ["createdAt", "ASC"],
+    order: [["createdAt", "DESC"]],
   });
   articles.forEach((article) => {
     article.createdAt = format(article.createdAt, "dd 'de' MMMM','  yyyy", {

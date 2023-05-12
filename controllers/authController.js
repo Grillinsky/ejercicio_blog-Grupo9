@@ -13,4 +13,15 @@ async function show(req, res) {
   res.render("login");
 }
 
-module.exports = { login, show };
+//Log Ou
+function logout(req, res) {
+  req.logout(function (err) {
+    if (err) {
+      // Manejar el error, si es necesario
+      console.error(err);
+    }
+    res.redirect("/");
+  });
+}
+
+module.exports = { login, show, logout };
