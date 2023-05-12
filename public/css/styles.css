@@ -28,3 +28,6 @@
 .articles::-webkit-scrollbar {
   display: none;
 }
+.btn-outline-white:hover {
+  background-color: #eaf !important;
+}
