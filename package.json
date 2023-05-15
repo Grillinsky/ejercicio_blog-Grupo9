@@ -30,5 +30,13 @@
   "description": "Hack Academy - Ejemplo de MVC y Sequelize",
   "devDependencies": {
     "@faker-js/faker": "^6.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grillinsky/ejercicio_blog-Grupo9.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Grillinsky/ejercicio_blog-Grupo9/issues"
+  },
+  "homepage": "https://github.com/Grillinsky/ejercicio_blog-Grupo9#readme"
 }

@@ -38,19 +38,41 @@
     </div>
     <div class="container mt-5">
       <h2 class="fw-bold">Add your comment</h2>
+
       <form class="mt-3" method="post">
+        <% if (locals.user){ %>
         <div class="mb-3">
-          <input placeholder="Name" type="text" class="form-control" name="userName" required />
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control h-25" name="userComment" required />
-        </div>
-        <div class="d-grid gap-2">
-          <% if (locals.user){ %>
-          <button type="submit" class="btn btn-primary">Send</button>
-          <% } else { %>
-          <a class="btn btn-success" href="/login">Log In</a>
+          <label for="userName" class="form-label">Your name here</label>
+          <input
+            placeholder="Name"
+            type="text"
+            class="form-control"
+            name="userName"
+            value=" <%= user.authorFirstname %> <%= user.authorLastname %>"
+            required
+          />
           <% } %>
+          <div class="d-grid gap-2">
+            <% if (locals.user){ %>
+            <div class="mb-3">
+              <label for="userComment">Comment</label>
+              <textarea
+                rows="10"
+                cols="30"
+                type="text"
+                class="form-control"
+                name="userComment"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+            <% } else { %>
+            <div class="alert alert-danger" role="alert">
+              You need to be logged in to leave a comment.
+            </div>
+            <a class="btn btn-success" href="/login">Log In</a>
+            <% } %>
+          </div>
         </div>
       </form>
     </div>
