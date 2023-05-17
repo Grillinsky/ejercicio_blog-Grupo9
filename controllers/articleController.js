@@ -1,8 +1,7 @@
 const { Article, Comment, Author } = require("../models");
 const { format } = require("date-fns");
 const { es } = require("date-fns/locale");
-const formidable = require("formidable");
-const sessions = require("express-session");
+
 // Display a listing of the resource.
 
 async function index(req, res) {}
@@ -51,7 +50,6 @@ async function edit(req, res) {
 // Update the specified resource in storage.
 async function update(req, res) {
   const article = req.body;
-  // article.id = req.params.id
   const articleId = req.params.id;
   await Article.update(
     {
@@ -73,7 +71,6 @@ async function destroy(req, res) {
     },
   });
 
-  console.log("Eliminé este venom");
   return res.redirect("/admin");
 }
 

@@ -2,13 +2,14 @@
   <div class="container px-5">
     <a class="navbar-brand mb-0 h1 text-white" href="/">Hack the blog</a>
     <div>
-      <% if (locals.user) { %>
-      <p class="text-white btn m-1">
-        Bienvenido <%= user.authorFirstname %> <%= user.authorLastname %>
-      </p>
-      <a class="btn btn-secondary m-1" href="/admin">Admin</a>
-      <a class="btn btn-outline-danger m-1" href="/">LogOut</a>
-
+      <% if (locals.user && locals.user.role.code >= 400) { %>
+      <p class="text-white btn m-1"><%= user.authorFirstname %> <%= user.authorLastname %></p>
+      <a class="btn btn-secondary m-1" href="/admin">Modificar Articulos</a>
+      <a class="btn btn-primary m-1" href="/admin/userAdmin">Modificar Usuarios</a>
+      <a class="btn btn-outline-danger m-1" href="/logout">LogOut</a>
+      <% } else if (locals.user) { %>
+      <p class="text-white btn m-1"><%= user.authorFirstname %> <%= user.authorLastname %></p>
+      <a class="btn btn-outline-danger m-1" href="/logout">LogOut</a>
       <% } else { %>
       <a class="btn btn-outline-primary m-1" href="/usuarios/registro">Sign Up</a>
       <a class="btn btn-success m-1" href="/login">Login</a>

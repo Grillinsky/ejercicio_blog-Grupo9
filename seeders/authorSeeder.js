@@ -12,7 +12,8 @@ module.exports = async () => {
       authorFirstname: faker.name.firstName(),
       authorLastname: faker.name.lastName(),
       authorEmail: faker.internet.email(),
-      password: await bcrypt.hash(faker.internet.password(), 5),
+      password: await bcrypt.hash("1234", 5),
+      roleId: Math.floor(Math.random() * 4 + 1),
     });
   }
 

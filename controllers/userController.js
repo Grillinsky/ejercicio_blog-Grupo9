@@ -16,18 +16,33 @@ async function store(req, res) {
       authorFirstname: req.body.firstName,
       authorLastname: req.body.lastName,
       authorEmail: req.body.email,
+      roleId: 1,
       password: await bcrypt.hash(req.body.password, 3),
     });
   }
   if (newAuthor) {
-    req.login(newAuthor, () => res.redirect("/admin"));
+    req.login(newAuthor, () => res.redirect("/"));
     console.log(req.user);
   } else {
     res.redirect("back");
   }
 }
+async function destroy(req, res) {
+  await Article.destroy({
+    where: {
+      userID: req.params.id,
+    },
+  });
+  await Author.destroy({
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.redirect("back");
+}
 
 module.exports = {
   create,
   store,
+  destroy,
 };

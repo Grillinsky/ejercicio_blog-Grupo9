@@ -25,5 +25,4 @@ module.exports = (app) => {
   // app.use("/articulo/:id", articleRoutes);
   app.use("/usuarios", userRoutes);
   app.use("/", publicRoutes);
-  app.use("/", privateRoutes);
 };

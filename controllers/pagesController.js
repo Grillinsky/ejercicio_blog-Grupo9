@@ -32,8 +32,7 @@ async function index(req, res) {
   });
   return res.render("home", { articles });
 }
-
-async function showAdmin(req, res) {
+async function showWriterAdmin(req, res) {
   const articles = await Article.findAll({ where: { authorId: req.user.id }, include: "author" });
   articles.forEach((article) => {
     article.dataValues.createdAt = format(article.dataValues.createdAt, "yyyy'-'MM'-'dd hh:mm:ss", {
@@ -43,10 +42,27 @@ async function showAdmin(req, res) {
   return res.render("admin", { articles });
 }
 
+async function showAdmin(req, res) {
+  const articles = await Article.findAll({ include: "author" });
+  for (const article of articles) {
+    article.dataValues.createdAt = format(article.dataValues.createdAt, "yyyy'-'MM'-'dd hh:mm:ss", {
+      locale: es,
+    });
+  }
+  return res.render("admin", { articles });
+}
+async function showAuthorAdmin(req, res) {
+  const authors = await Author.findAll();
+
+  return res.render("userAdmin", { authors });
+}
+
 // Otros handlers...
 // ...
 
 module.exports = {
   index,
   showAdmin,
+  showWriterAdmin,
+  showAuthorAdmin,
 };

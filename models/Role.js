@@ -25,14 +25,18 @@ class Role extends Model {
             isIn: [Object.values(ROLES)],
           },
         },
+        code: {
+          type: DataTypes.INTEGER.UNSIGNED,
+          allowNull: false,
+        },
       },
       {
         sequelize,
-        modelName: "Role",
+        modelName: "role",
       },
     );
     return Role;
   }
 }
 
-module.exports = { Role, ROLES };
+module.exports = Role;

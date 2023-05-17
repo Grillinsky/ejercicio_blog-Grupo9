@@ -5,6 +5,7 @@ const pagesController = require("../controllers/pagesController");
 
 router.get("/login", authController.show);
 router.post("/login", authController.login);
+router.get("/logOut", authController.logout);
 
 router.get("/", pagesController.index);
 

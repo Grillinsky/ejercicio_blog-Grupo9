@@ -1,10 +1,12 @@
 const { passport } = require("../config/passport");
+const express = require("express");
+const app = express();
 
 function login(req, res) {
   console.log("Entro a login");
   passport.authenticate("local", {
-    successRedirect: "/welcome",
-    failureRedirect: "/",
+    successRedirect: "/",
+    failureRedirect: "/login",
   })(req, res);
 }
 
